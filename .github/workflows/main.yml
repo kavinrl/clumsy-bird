@@ -16,5 +16,5 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
     - run: |
-        docker build . -t aksgithub.azurecr.io/clumsy-bird:${{ github.sha}}
-        docker push aksgithub.azurecr.io/clumsy-bird:${{ github.sha}}
+        docker build . -t aksgithub.azurecr.io/clumsy-bird:${{ github.sha }}
+        docker push aksgithub.azurecr.io/clumsy-bird:${{ github.sha }}
