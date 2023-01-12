@@ -18,5 +18,5 @@ jobs:
         enable-AzPSSession: true 
      
     - run: |
-        Get-AzVM -ResourceGroupName "aks"
+        az group exists --name aks
         
