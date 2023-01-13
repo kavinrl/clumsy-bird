@@ -30,6 +30,10 @@ jobs:
         docker push contosocontainerregistry2691.azurecr.io/clumsybird:${{ github.sha }}
     - name: setup kubectl
       uses: azure/setup-kubectl@v1
+    - name: kubernetes set context
+      uses: azure/k8s-set-context@v1
+      with:
+        kubeconfig: ${{ secrets.KUBECONFIG }}
     - run: |
         kubectl run clumsy-bird --image contosocontainerregistry2691.azurecr.io/clumsybird:${{ github.sha }} -o yaml --dry-run|kubectl apply -n aksgithubcluster -f -
         kubectl -n aksgithubcluster expose deploy clumsy-bird --type LoadBalancer -o yaml --dry-run|kubectl apply -n aksgithubcluster -f -
