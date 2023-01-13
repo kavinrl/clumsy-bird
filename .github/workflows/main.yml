@@ -16,7 +16,14 @@ jobs:
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
         enable-AzPSSession: true 
-     
+        
+    - name: Login via Az module
+      uses: azure/login@v1
+      with:
+        login-server: contosocontainerregistry2691.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        az group exists --name aks
+        docker build . -t contosocontainerregistry2691.azurecr.io/clumsybird:${{ github.sha }}
+        docker push contosocontainerregistry2691.azurecr.io/clumsybird:${{ github.sha }}
         
