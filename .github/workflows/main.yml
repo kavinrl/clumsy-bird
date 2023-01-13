@@ -32,5 +32,5 @@ jobs:
       uses: azure/setup-kubectl@v1
     - run: |
         kubectl run clumsy-bird --image contosocontainerregistry2691.azurecr.io/clumsybird:${{ github.sha }} -o yaml --dry-run|kubectl apply -n aksgithubcluster -f -
-        kubectl -n aksgithubcluster expose deploy clumsy-bird --port 80 --type LoadBalancer -o yaml --dry-run|kubectl apply -n dev -f -
+        kubectl -n aksgithubcluster expose deploy clumsy-bird --port 80 --type LoadBalancer -o yaml --dry-run|kubectl apply -n aksgithubcluster -f -
         
