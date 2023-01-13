@@ -16,6 +16,8 @@ jobs:
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
         enable-AzPSSession: true 
+    - name: Check out code
+      uses: actions/checkout@v2
         
     - name: Login to acr
       uses: azure/docker-login@v1
